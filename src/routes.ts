@@ -26,7 +26,8 @@ router.addHandler(labels.START, async ({ $, crawler }) => {
                     title: titleElement.first().text().trim(),
                     company: element.find('h3').first().text().trim(),
                     salaryRange: element.find('.text-salary').first().text().trim(),
-                    location: element.find('.job-location-mobile').first().text().trim(),
+                    location: element.find('.job-location-mobile a[href]').text().trim().split("\n\n")[1],
+                    tags: element.find('span.my-badge a').text().trim().split("\n\n"),
                 },
             },
         }]);
@@ -35,11 +36,11 @@ router.addHandler(labels.START, async ({ $, crawler }) => {
 
 router.addHandler(labels.JOB, async ({ $, request }) => {
     const { data } = request.userData;
-    // console.log(data.title, data.company, data.salaryRange);
+    console.log(data.title, data.company, data.salaryRange, data.tags);
 
     const element = $('div.text-dark-grey-text');
     const titleElement = element.find('h4');
-    console.log(titleElement.first().text().trim());
+    //console.log(titleElement.first().text().trim());
 
     // await Dataset.pushData({
     //     ...data,
