@@ -54,4 +54,14 @@ router.addHandler(labels.START_REMOTE, async({ $, crawler, request }) => {
         const element = $(job);
         console.log(element);
     }
-})
+});
+
+router.addHandler(labels.START_CCJ, async({ $, crawler, request }) => {
+    const jobs = $('li');
+    console.log("Jobs: " + jobs.length);
+    for (const job of jobs) {
+        const element = $(job);
+        const title = element.find('h2').text().trim();
+        console.log(title);
+    }
+});
