@@ -22,8 +22,8 @@ const crawler = new CheerioCrawler({
 
 await crawler.addRequests([{
     url: BASE_URLS.ccj,
-    label: labels.START_CCJ
-}])
+    label: labels.START_CCJ,
+}]);
 
 await crawler.run();
 
